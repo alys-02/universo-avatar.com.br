@@ -10,7 +10,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from sqlmodel import SQLModel, Field, Session, create_engine, select
 
-from passlib.context import CryptContext
+from pwdlib import PasswordHash
 
 
 app = FastAPI()
@@ -31,10 +31,7 @@ app.mount("/series_estilos", StaticFiles(directory="series_estilos"), name="seri
 
 templates = Jinja2Templates(directory="templates")
 
-senha_context = CryptContext(
-    schemes=["bcrypt"],
-    deprecated="auto"
-)
+senha_context = PasswordHash.recommended()
 
 
 class Usuario(SQLModel, table=True):
