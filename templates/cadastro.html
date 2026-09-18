@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta</title>
+
+   <link rel="stylesheet" href="/estilos/conta.css">
+</head>
+
+<body>
+
+    <main class="formulario-conta">
+
+        <div class="caixa-conta">
+
+            <h1>Criar conta</h1>
+
+            {% if erro %}
+                <p class="erro">{{ erro }}</p>
+            {% endif %}
+
+            <form method="post" action="/cadastro">
+
+                <input
+                    type="text"
+                    name="nome_usuario"
+                    placeholder="Nome de usuário"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="senha"
+                    placeholder="Senha"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="confirmar_senha"
+                    placeholder="Confirme sua senha"
+                    required
+                >
+
+                <button type="submit">
+                    Criar conta
+                </button>
+
+            </form>
+
+            <p>
+                Já possui uma conta?
+                <a href="/login">Entrar</a>
+            </p>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

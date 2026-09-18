@@ -12,10 +12,12 @@ body {
             rgba(0, 30, 70, 0.65)
         ),
         url("../imagens/wp1953292.jpg");
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+
     min-height: 100vh;
     color: white;
 }
@@ -263,6 +265,236 @@ footer p {
 }
 
 
+/* COMENTÁRIOS */
+
+.comentarios {
+    width: 90%;
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 20px;
+    color: #063f73;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.comentarios h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.comentarios > p {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-comentario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.comentarios input,
+.comentarios textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+}
+
+.comentarios input:focus,
+.comentarios textarea:focus {
+    border-color: #075b91;
+    box-shadow: 0 0 5px rgba(7, 91, 145, 0.3);
+}
+
+.comentarios textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.comentarios button {
+    border: none;
+    border-radius: 10px;
+    padding: 11px 14px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.form-comentario button {
+    background: #063f73;
+    color: white;
+    font-size: 16px;
+}
+
+.form-comentario button:hover {
+    background: #0869bd;
+    transform: translateY(-2px);
+}
+
+
+/* LISTA DE COMENTÁRIOS */
+
+.lista-comentarios {
+    margin-top: 30px;
+}
+
+.comentario {
+    margin-top: 20px;
+    padding: 20px;
+    background: #eef7ff;
+    border-radius: 15px;
+    border-left: 5px solid #063f73;
+}
+
+.comentario-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.comentario h3 {
+    margin-bottom: 3px;
+    color: #063f73;
+}
+
+.comentario small {
+    color: #777;
+}
+
+.texto-comentario {
+    margin: 15px 0;
+    color: #333;
+    word-wrap: break-word;
+}
+
+
+/* REAÇÕES */
+
+.reacoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 15px 0;
+}
+
+.reacoes form {
+    margin: 0;
+}
+
+.reacoes button {
+    background: white;
+    color: #333;
+    border: 1px solid #ccddea;
+}
+
+.reacoes button:hover {
+    background: #dceeff;
+    transform: translateY(-2px);
+}
+
+.reacoes .reacao-selecionada {
+    background: #c8e5ff;
+    border-color: #063f73;
+}
+
+
+/* BOTÃO APAGAR */
+
+.botao-apagar {
+    background: transparent;
+    font-size: 18px;
+    padding: 7px 10px;
+}
+
+.botao-apagar:hover {
+    background: #ffdede;
+}
+
+
+/* RESPONDER */
+
+.responder {
+    margin-top: 15px;
+}
+
+.responder summary {
+    cursor: pointer;
+    color: #063f73;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.responder form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.responder button {
+    background: #063f73;
+    color: white;
+}
+
+.responder button:hover {
+    background: #0869bd;
+}
+
+
+/* RESPOSTAS */
+
+.respostas {
+    margin-top: 20px;
+    margin-left: 25px;
+    padding-left: 15px;
+    border-left: 3px solid #9bc9ed;
+}
+
+.resposta {
+    margin-top: 12px;
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.resposta-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.resposta h4 {
+    color: #063f73;
+}
+
+.resposta p {
+    margin-top: 10px;
+    color: #333;
+    word-wrap: break-word;
+}
+
+
+/* SEM COMENTÁRIOS */
+
+.nenhum-comentario {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    background: #eef7ff;
+    border-radius: 10px;
+}
+
+
+/* TABLET */
+
 @media (max-width: 850px) {
 
     .avatares {
@@ -280,7 +512,14 @@ footer p {
     }
 }
 
+
+/* CELULAR */
+
 @media (max-width: 600px) {
+
+    header {
+        padding: 20px 10px;
+    }
 
     header h1 {
         font-size: 28px;
@@ -292,6 +531,7 @@ footer p {
 
     nav {
         gap: 10px;
+        padding: 12px 8px;
     }
 
     nav a {
@@ -300,7 +540,8 @@ footer p {
     }
 
     main {
-        padding: 30px 15px;
+        padding: 30px 10px;
+        gap: 25px;
     }
 
     .titulo-avatares {
@@ -320,5 +561,93 @@ footer p {
         width: 100%;
         max-width: 320px;
     }
+
+    .comentarios {
+        width: 96%;
+        padding: 20px 15px;
+        margin: 30px auto;
+    }
+
+    .comentario {
+        padding: 15px;
+    }
+
+    .comentario-topo {
+        align-items: flex-start;
+    }
+
+    .reacoes {
+        gap: 5px;
+    }
+
+    .reacoes button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .respostas {
+        margin-left: 8px;
+        padding-left: 10px;
+    }
+
+    .resposta {
+        padding: 12px;
+    }
+
+    footer {
+        padding: 20px 10px;
+    }
+}
+/* ACESSO À CONTA */
+
+.acesso-conta {
+    margin: 20px 0;
+    padding: 18px;
+    text-align: center;
+    background: rgba(225, 242, 255, 0.85);
+    border-radius: 12px;
+    border: 1px solid #c5e1f5;
 }
 
+.acesso-conta p {
+    margin-bottom: 14px;
+    color: #31566f;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.acesso-conta a {
+    display: inline-block;
+    padding: 9px 20px;
+    margin: 4px;
+
+    background: #075b91;
+    color: white;
+
+    text-decoration: none;
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.acesso-conta a:hover {
+    background: #063f70;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+
+    .acesso-conta {
+        padding: 15px 10px;
+    }
+
+    .acesso-conta a {
+        display: block;
+        margin: 8px auto;
+        max-width: 180px;
+    }
+
+}

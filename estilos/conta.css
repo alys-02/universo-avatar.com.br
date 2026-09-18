@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-height: 100vh;
+
+    color: #063f73;
+
+    background-image:
+        linear-gradient(
+            rgba(20, 90, 150, 0.45),
+            rgba(0, 35, 80, 0.70)
+        ),
+        url("../imagens/wp1953292.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.formulario-conta {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caixa-conta {
+    width: 100%;
+    max-width: 430px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    padding: 38px 35px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    text-align: center;
+
+    border-top: 5px solid #347eae;
+
+    animation: aparecer 0.6s ease;
+}
+
+.caixa-conta h1 {
+    color: #063f73;
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+}
+
+.caixa-conta form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.caixa-conta input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 2px solid #b9d9f0;
+
+    border-radius: 9px;
+
+    background: #f8fcff;
+
+    color: #063f73;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.caixa-conta input:focus {
+    border-color: #347eae;
+
+    background: white;
+
+    box-shadow: 0 0 8px rgba(52, 126, 174, 0.25);
+}
+
+.caixa-conta input::placeholder {
+    color: #7895aa;
+}
+
+.caixa-conta button {
+    margin-top: 5px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #347eae;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.caixa-conta button:hover {
+    background: #28658f;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.20);
+}
+
+.caixa-conta p {
+    margin-top: 22px;
+
+    color: #31566f;
+
+    font-size: 16px;
+}
+
+.caixa-conta a {
+    color: #176ca1;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+.caixa-conta a:hover {
+    text-decoration: underline;
+}
+
+.erro {
+    margin: 0 0 18px 0 !important;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    background: #ffe4e4;
+
+    color: #b00020 !important;
+
+    font-weight: bold;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .caixa-conta {
+        padding: 30px 22px;
+
+        border-radius: 15px;
+    }
+
+    .caixa-conta h1 {
+        font-size: 27px;
+    }
+
+    .caixa-conta input {
+        font-size: 15px;
+
+        padding: 13px;
+    }
+
+    .caixa-conta button {
+        font-size: 16px;
+
+        padding: 13px;
+    }
+
+}

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universo Avatar</title>
+    <link rel="stylesheet" href="/estilos/inicio.css">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Bem-Vindo ao Universo Avatar</h1>
+
+        <h2>O melhor da dominação para você!</h2>
+
+        <div class="links">
+
+            <nav id="dominacao">
+
+                <a href="/paginas/agua.html">Água</a>
+
+                <a href="/paginas/terra.html">Terra</a>
+
+                <a href="/paginas/fogo.html">Fogo</a>
+
+                <a href="/paginas/ar.html">Ar</a>
+
+                <a href="/series/inicio_catalago.html">
+                    Séries
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <h2 class="titulo-avatares">
+            Conheça os Avatares
+        </h2>
+
+
+        <section class="avatares">
+
+            <div class="avatar-card">
+
+                <img
+                    src="/imagens/Anng/capa aang.jpg"
+                    alt="Aang"
+                >
+
+                <div class="avatar-info">
+
+                    <h2>Aang</h2>
+
+                    <p>
+                        O Avatar que dominou os quatro elementos.
+                    </p>
+
+                    <a href="/paginas/aang.html">
+                        Conheça a história
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="avatar-card">
+
+                <img
+                    src="/imagens/Korra/capa korra.jpg"
+                    alt="Korra"
+                >
+
+                <div class="avatar-info">
+
+                    <h2>Korra</h2>
+
+                    <p>
+                        A Avatar que enfrentou grandes desafios.
+                    </p>
+
+                    <a href="/paginas/korra.html">
+                        Conheça a história
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="avatar-card">
+
+                <img
+                    src="/imagens/Pavi/capa pavi.jpg"
+                    alt="Pavi"
+                >
+
+                <div class="avatar-info">
+
+                    <h2>Pavi</h2>
+
+                    <p>
+                        Em breve....
+                    </p>
+
+                    <a href="/paginas/pavi.html">
+                        Conheça a história
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <h2 id="card-titulo">
+            Conheça as 4 dominações
+        </h2>
+
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h2>🌊 Água</h2>
+
+                <p>
+                    Conheça a dominação da água.
+                </p>
+
+                <a href="/paginas/agua.html">
+                    Saiba mais
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>🌱 Terra</h2>
+
+                <p>
+                    Conheça a dominação da terra.
+                </p>
+
+                <a href="/paginas/terra.html">
+                    Saiba mais
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>🔥 Fogo</h2>
+
+                <p>
+                    Conheça a dominação do fogo.
+                </p>
+
+                <a href="/paginas/fogo.html">
+                    Saiba mais
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>🍃 Ar</h2>
+
+                <p>
+                    Conheça a dominação do ar.
+                </p>
+
+                <a href="/paginas/ar.html">
+                    Saiba mais
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="comentarios">
+
+            <h2>💬 Comentários</h2>
+
+            <p>
+                Compartilhe sua opinião sobre o Universo Avatar!
+            </p>
+
+
+            {% if usuario %}
+
+                <div class="usuario-logado">
+
+                    <p>
+                        👤 Olá,
+                        <strong>
+                            {{ usuario.nome_usuario }}
+                        </strong>!
+                    </p>
+
+                    <a
+                        href="/logout"
+                        class="botao-sair"
+                    >
+                        Sair da conta
+                    </a>
+
+                </div>
+
+
+                <form
+                    action="/comentarios"
+                    method="post"
+                    class="form-comentario"
+                >
+
+                    <textarea
+                        name="texto"
+                        placeholder="Escreva seu comentário..."
+                        maxlength="500"
+                        required
+                    ></textarea>
+
+                    <button type="submit">
+                        💬 Comentar
+                    </button>
+
+                </form>
+
+            {% else %}
+
+                <div class="acesso-conta">
+
+                    <p>🔐 Entre na sua conta para comentar!</p>
+
+                    <a href="/login">Entrar</a>
+
+                    <a href="/cadastro">Criar conta</a>
+
+                </div>
+            {% endif %}
+
+
+            <div class="lista-comentarios">
+
+                {% for item in comentarios %}
+
+                    <div class="comentario">
+
+                        <div class="comentario-topo">
+
+                            <div>
+
+                                <h3>
+                                    {{ item.comentario.nome }}
+                                </h3>
+
+                                <small>
+                                    {{ item.comentario.data.strftime("%d/%m/%Y %H:%M") }}
+                                </small>
+
+                            </div>
+
+
+                            {% if usuario and usuario.id == item.comentario.usuario_id %}
+
+                                <form
+                                    action="/apagar-comentario"
+                                    method="post"
+                                    onsubmit="return confirm('Deseja apagar este comentário?');"
+                                >
+
+                                    <input
+                                        type="hidden"
+                                        name="comentario_id"
+                                        value="{{ item.comentario.id }}"
+                                    >
+
+                                    <button
+                                        type="submit"
+                                        class="botao-apagar"
+                                        title="Apagar comentário"
+                                    >
+                                        🗑️
+                                    </button>
+
+                                </form>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <p class="texto-comentario">
+                            {{ item.comentario.texto }}
+                        </p>
+
+
+                        <div class="reacoes">
+
+
+                            <form
+                                action="/reagir"
+                                method="post"
+                            >
+
+                                <input
+                                    type="hidden"
+                                    name="comentario_id"
+                                    value="{{ item.comentario.id }}"
+                                >
+
+                                <button
+                                    type="submit"
+                                    name="tipo"
+                                    value="❤️"
+                                    class="{% if item.minha_reacao == '❤️' %}reacao-selecionada{% endif %}"
+                                >
+                                    ❤️ {{ item.reacoes["❤️"] }}
+                                </button>
+
+                            </form>
+
+
+                            <form
+                                action="/reagir"
+                                method="post"
+                            >
+
+                                <input
+                                    type="hidden"
+                                    name="comentario_id"
+                                    value="{{ item.comentario.id }}"
+                                >
+
+                                <button
+                                    type="submit"
+                                    name="tipo"
+                                    value="👍"
+                                    class="{% if item.minha_reacao == '👍' %}reacao-selecionada{% endif %}"
+                                >
+                                    👍 {{ item.reacoes["👍"] }}
+                                </button>
+
+                            </form>
+
+
+                            <form
+                                action="/reagir"
+                                method="post"
+                            >
+
+                                <input
+                                    type="hidden"
+                                    name="comentario_id"
+                                    value="{{ item.comentario.id }}"
+                                >
+
+                                <button
+                                    type="submit"
+                                    name="tipo"
+                                    value="😂"
+                                    class="{% if item.minha_reacao == '😂' %}reacao-selecionada{% endif %}"
+                                >
+                                    😂 {{ item.reacoes["😂"] }}
+                                </button>
+
+                            </form>
+
+
+                            <form
+                                action="/reagir"
+                                method="post"
+                            >
+
+                                <input
+                                    type="hidden"
+                                    name="comentario_id"
+                                    value="{{ item.comentario.id }}"
+                                >
+
+                                <button
+                                    type="submit"
+                                    name="tipo"
+                                    value="😮"
+                                >
+                                    😮 {{ item.reacoes["😮"] }}
+                                </button>
+
+                            </form>
+
+
+                            <form
+                                action="/reagir"
+                                method="post"
+                            >
+
+                                <input
+                                    type="hidden"
+                                    name="comentario_id"
+                                    value="{{ item.comentario.id }}"
+                                >
+
+                                <button
+                                    type="submit"
+                                    name="tipo"
+                                    value="😢"
+                                >
+                                    😢 {{ item.reacoes["😢"] }}
+                                </button>
+
+                            </form>
+
+                        </div>
+
+
+                        {% if usuario %}
+
+                            <details class="responder">
+
+                                <summary>
+                                    ↩️ Responder
+                                </summary>
+
+
+                                <form
+                                    action="/responder"
+                                    method="post"
+                                >
+
+                                    <input
+                                        type="hidden"
+                                        name="comentario_id"
+                                        value="{{ item.comentario.id }}"
+                                    >
+
+                                    <textarea
+                                        name="texto"
+                                        placeholder="Escreva sua resposta..."
+                                        maxlength="500"
+                                        required
+                                    ></textarea>
+
+                                    <button type="submit">
+                                        Enviar resposta
+                                    </button>
+
+                                </form>
+
+                            </details>
+
+                        {% endif %}
+
+
+                        {% if item.respostas %}
+
+                            <div class="respostas">
+
+                                <h4>
+                                    Respostas
+                                </h4>
+
+
+                                {% for resposta in item.respostas %}
+
+                                    <div class="resposta">
+
+                                        <div class="resposta-topo">
+
+                                            <div>
+
+                                                <h4>
+                                                    ↪️ {{ resposta.nome }}
+                                                </h4>
+
+                                                <small>
+                                                    {{ resposta.data.strftime("%d/%m/%Y %H:%M") }}
+                                                </small>
+
+                                            </div>
+
+
+                                            {% if usuario and usuario.id == resposta.usuario_id %}
+
+                                                <form
+                                                    action="/apagar-resposta"
+                                                    method="post"
+                                                    onsubmit="return confirm('Deseja apagar esta resposta?');"
+                                                >
+
+                                                    <input
+                                                        type="hidden"
+                                                        name="resposta_id"
+                                                        value="{{ resposta.id }}"
+                                                    >
+
+                                                    <button
+                                                        type="submit"
+                                                        class="botao-apagar"
+                                                        title="Apagar resposta"
+                                                    >
+                                                        🗑️
+                                                    </button>
+
+                                                </form>
+
+                                            {% endif %}
+
+                                        </div>
+
+
+                                        <p>
+                                            {{ resposta.texto }}
+                                        </p>
+
+                                    </div>
+
+                                {% endfor %}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                {% else %}
+
+                    <p class="nenhum-comentario">
+                        Ainda não existem comentários.
+                        Seja o primeiro a comentar!
+                    </p>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <h2>
+            Universo Avatar
+        </h2>
+
+        <p>
+            Um site dedicado ao universo de Avatar.
+        </p>
+
+        <p>
+            © 2026 Alysson Henrique.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
